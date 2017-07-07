@@ -1,0 +1,23 @@
+{
+  "name": "dimoncheg12/ipsp-php",
+  "description": "",
+  "keywords": [
+    "fondy php"
+  ],
+  "homepage": "https://fondy.eu",
+  "authors": [
+    {
+      "name": "DM"
+    }
+  ],
+  "require": {
+    "php": ">=5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.7.*",
+    "phpdocumentor/phpdocumentor": "2.*"
+  },
+  "autoload": {
+    "psr-4": { "Ipsp\\": "Ipsp/"}
+  }
+}

@@ -1,6 +1,8 @@
 <?php
 
-    class Ipsp_Error extends \Exception{
+namespace Ipsp;
+
+    class Error extends \Exception{
 
 
     }

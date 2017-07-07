@@ -1,9 +1,11 @@
 <?php
 
+namespace Ipsp;
+
 /**
- * Class Ipsp_Api
+ * Class Api
  */
-class Ipsp_Api {
+class Api {
 
     private $client;
     private $params = array();
@@ -16,9 +18,9 @@ class Ipsp_Api {
     const RUB = 'RUB';
     const GBP = 'GBP';    
     /**
-     * @param Ipsp_Client $client
+     * @param Client $client
      */
-    public function __construct( Ipsp_Client $client ){
+    public function __construct( Client $client ){
         $this->client   = $client;
         set_error_handler(array($this, 'handleError'));
         set_exception_handler(array($this, 'handleException'));
@@ -28,7 +30,7 @@ class Ipsp_Api {
      * @return bool
      */
     public function initResource($name){
-        $class    = implode('_',array('Ipsp','Resource',ucfirst($name)));
+        $class    = implode('_',['Ipsp','Resource',ucfirst($name)]);
         if(!class_exists($class)) new \Exception(sprintf('ipsp resource "%s" not found',$class));
         $resource = new $class;
         return $resource;
@@ -39,7 +41,7 @@ class Ipsp_Api {
      * @return mixed
      * @throws Exception
      */
-    public function call($name=NULL,$params=array()) {
+    public function call($name = NULL,$params = []) {
         $resource = $this->initResource($name);
         $resource->setClient($this->client);
         return $resource->call(array_merge($this->params,$params));
@@ -48,10 +50,10 @@ class Ipsp_Api {
      * @param string $key
      * @param string $value
      */
-    public function setParam($key='',$value=''){
+    public function setParam($key = '',$value = ''){
         $this->params[$key] = $value;
     }
-    public function getParam($key=''){
+    public function getParam($key = ''){
         $this->params[$key];
     }
     /**

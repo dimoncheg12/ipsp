@@ -1,21 +1,24 @@
 <?php
 
+namespace Ipsp;
+
 /**
- * Class Ipsp_Request
+ * Class Request
  */
-class Ipsp_Request {
+class Request {
+
     private $curl;
     private $format;
-    private $contentType = array(
+    private $contentType = [
         'json' => 'application/json',
         'xml'  => 'application/xml',
         'form' => 'application/x-www-form-urlencoded'
-    );
+    ];
     /**
      *
      */
     public function __construct(){
-        $this->curl = new Ipsp_Curl;
+        $this->curl = new Curl;
     }
     /**
      * @param $format
@@ -42,7 +45,7 @@ class Ipsp_Request {
      * @param string $str
      * @return string
      */
-    private function getContentLength($str=''){
+    private function getContentLength($str = ''){
         return sprintf('Content-Length: %s',strlen($str));
     }
 
@@ -51,7 +54,7 @@ class Ipsp_Request {
      * @param array $params
      * @return bool|mixed
      */
-    public function doPost( $url = '' , $params=array()){
+    public function doPost( $url = '' , $params = []){
         $this->curl->create($url);
         $this->curl->ssl();
         $this->curl->post($params);
@@ -66,7 +69,7 @@ class Ipsp_Request {
      * @param string $format
      * @return bool|mixed
      */
-    public function doGet( $url='', $params=array()){
+    public function doGet( $url='', $params = []){
         $this->create($url.(empty($params) ? '' : '?'.http_build_query($params, NULL, '&')));
         $this->curl->ssl();
         $this->curl->http_header($this->getContentType( $this->format ));
