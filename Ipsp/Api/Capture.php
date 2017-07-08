@@ -10,26 +10,26 @@ use Ipsp\IpspResource;
 class Capture extends IpspResource
 {
     protected $path = '/capture/order_id';
-    protected $fields = array(
-        'merchant_id' => array(
+    protected $fields = [
+        'merchant_id' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'order_id' => array(
+        ],
+        'order_id' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'currency' => array(
+        ],
+        'currency' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'amount' => array(
+        ],
+        'amount' => [
             'type' => 'integer',
             'required' => TRUE
-        ),
-        'signature' => array(
+        ],
+        'signature' => [
             'type' => 'string',
             'required' => TRUE
-        )
-    );
+        ]
+    ];
 }

@@ -2,49 +2,49 @@
 
 namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_Refund
  */
-class P2pcredit extends Resource {
+class P2pcredit extends IpspResource {
     protected $path   = '/p2pcredit';
-    protected $fields = array(
-        'merchant_id'=>array(
+    protected $fields = [
+        'merchant_id'=>[
             'type'    => 'string',
             'required'=>TRUE
-        ),
-        'order_id'=>array(
+        ],
+        'order_id'=>[
             'type'    => 'string',
             'required'=>TRUE
-        ),
-        'order_desc'=>array(
+        ],
+        'order_desc'=>[
             'type'    => 'string',
             'required'=>TRUE
-        ),
-        'currency' => array(
+        ],
+        'currency' => [
             'type' => 'string',
             'required'=>TRUE
-        ),
-        'amount' => array(
+        ],
+        'amount' => [
             'type' => 'integer',
             'required'=>TRUE
-        ),
-        'receiver_card_number'=>array(
+        ],
+        'receiver_card_number'=>[
             'type' => 'string',
             'required'=>FALSE
-        ),
-        'receiver_rectoken'=>array(
+        ],
+        'receiver_rectoken'=>[
             'type' => 'string',
             'required'=>FALSE
-        ),
-        'signature' => array(
+        ],
+        'signature' => [
             'type' => 'string',
             'required'=>TRUE
-        ),
-        'version' => array(
+        ],
+        'version' => [
             'type' => 'string',
             'required'=>FALSE
-        )
-    );
+        ]
+    ];
 }
