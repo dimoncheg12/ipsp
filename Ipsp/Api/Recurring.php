@@ -1,44 +1,44 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_Refund
  */
-class Recurring extends Resource{
+class Recurring extends IpspResource{
 
     protected $path   = '/recurring';
-    protected $fields = array(
-        'merchant_id'=>array(
+    protected $fields = [
+        'merchant_id'=>[
             'type'    => 'string',
             'required'=>TRUE
-        ),
-        'order_id'=>array(
+        ],
+        'order_id'=>[
             'type'    => 'string',
             'required'=>TRUE
-        ),
-        'currency' => array(
+        ],
+        'currency' => [
             'type' => 'string',
             'required'=>TRUE
-        ),
-        'amount' => array(
+        ],
+        'amount' => [
             'type' => 'integer',
             'required'=>TRUE
-        ),
-        'signature' => array(
+        ],
+        'signature' => [
             'type' => 'string',
             'required'=>TRUE
-        ),
-        'rectoken' => array(
+        ],
+        'rectoken' => [
             'type' => 'string',
             'required'=>TRUE
-        ),
-        'version' => array(
+        ],
+        'version' => [
             'type' => 'string',
             'required'=>FALSE
-        )
-    );
+        ]
+    ];
 
 }

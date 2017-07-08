@@ -1,53 +1,55 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_PaymentPcidss
  */
-class Pcidss extends Resource{
+class Pcidss extends IpspResource
+{
     protected $path = '/3dsecure_step1';
-    protected $fields = array(
-        'order_id' => array(
+    protected $fields = [
+        'order_id' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'order_desc' => array(
+        ],
+        'order_desc' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'currency' => array(
+        ],
+        'currency' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'amount' => array(
+        ],
+        'amount' => [
             'type' => 'datetime',
             'required' => TRUE
-        ),
-        'card_number' => array(
+        ],
+        'card_number' => [
             'type' => 'creditcard',
             'required' => TRUE
-        ),
-        'cvv2' => array(
+        ],
+        'cvv2' => [
             'type' => 'cvv',
             'required' => TRUE
-        ),
-        'expiry_date' => array(
+        ],
+        'expiry_date' => [
             'type' => 'datetime',
             'required' => TRUE
-        )
-    );
+        ]
+    ];
 
-    public function acsRedirect( ){
+    public function acsRedirect()
+    {
         $response = $this->response;
-        if(!$response->acs_url) return FALSE;
-        $data = array(
-            'PaReq'   => $response->pareq,
-            'MD'      => $response->md,
+        if (!$response->acs_url) return FALSE;
+        $data = [
+            'PaReq' => $response->pareq,
+            'MD' => $response->md,
             'TermUrl' => $this->getParam('response_url')
-        );
+        ];
         $html = "<html><body><form id='form' action='$response->acs_url' method='post'>";
         foreach ($data as $key => $value)
             $html .= "<input type='hidden' name='$key' value='$value'>";

@@ -1,34 +1,35 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_PaymentResult
  */
-class Capture extends Resource{
-    protected $path   = '/capture/order_id';
+class Capture extends IpspResource
+{
+    protected $path = '/capture/order_id';
     protected $fields = array(
-        'merchant_id'=>array(
-            'type'    => 'string',
-            'required'=>TRUE
+        'merchant_id' => array(
+            'type' => 'string',
+            'required' => TRUE
         ),
-        'order_id'=>array(
-            'type'    => 'string',
-            'required'=>TRUE
+        'order_id' => array(
+            'type' => 'string',
+            'required' => TRUE
         ),
         'currency' => array(
             'type' => 'string',
-            'required'=>TRUE
+            'required' => TRUE
         ),
         'amount' => array(
             'type' => 'integer',
-            'required'=>TRUE
+            'required' => TRUE
         ),
         'signature' => array(
             'type' => 'string',
-            'required'=>TRUE
+            'required' => TRUE
         )
     );
 }

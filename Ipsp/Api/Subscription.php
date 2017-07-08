@@ -1,46 +1,47 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_Refund
  */
-class Verification extends Resource{
+class Subscription extends IpspResource
+{
 
-    protected $path   = '/checkout/url';
-    protected $defaultParams = array(
-        'subscription'=>'Y'
-    );
-    protected $fields = array(
-        'merchant_id'=>array(
-            'type'    => 'string',
-            'required'=>TRUE
-        ),
-        'order_id'=>array(
-            'type'    => 'string',
-            'required'=>TRUE
-        ),
-        'currency' => array(
+    protected $path = '/checkout/url';
+    protected $defaultParams = [
+        'subscription' => 'Y'
+    ];
+    protected $fields = [
+        'merchant_id' => [
             'type' => 'string',
-            'required'=>TRUE
-        ),
-        'amount' => array(
+            'required' => TRUE
+        ],
+        'order_id' => [
+            'type' => 'string',
+            'required' => TRUE
+        ],
+        'currency' => [
+            'type' => 'string',
+            'required' => TRUE
+        ],
+        'amount' => [
             'type' => 'integer',
-            'required'=>TRUE
-        ),
-        'subscription'=>array(
+            'required' => TRUE
+        ],
+        'subscription' => [
             'type' => 'string',
-            'equal'=> 'y'
-        ),
-        'signature' => array(
+            'equal' => 'y'
+        ],
+        'signature' => [
             'type' => 'string',
-            'required'=>TRUE
-        ),
-        'version' => array(
+            'required' => TRUE
+        ],
+        'version' => [
             'type' => 'string',
-            'required'=>FALSE
-        )
-    );
+            'required' => FALSE
+        ]
+    ];
 }

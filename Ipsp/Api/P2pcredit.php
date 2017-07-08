@@ -1,6 +1,6 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
 use Ipsp\Resource;
 

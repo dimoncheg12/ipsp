@@ -1,38 +1,39 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_Refund
  */
-class Reports extends Resource{
+class Reports extends IpspResource
+{
 
-    protected $path   = '/reports';
-    protected $fields = array(
-        'merchant_id'=>array(
-            'type'    => 'string',
-            'required'=> TRUE
-        ),
-        'date_from'=>array(
-            'type'     => 'string',
-            'format'   => '',
+    protected $path = '/reports';
+    protected $fields = [
+        'merchant_id' => [
+            'type' => 'string',
             'required' => TRUE
-        ),
-        'date_to' => array(
-            'type'    => 'string',
-            'format'  => '' ,
-            'required'=> TRUE
-        ),
-        'signature' => array(
+        ],
+        'date_from' => [
             'type' => 'string',
-            'required'=>TRUE
-        ),
-        'version' => array(
+            'format' => '',
+            'required' => TRUE
+        ],
+        'date_to' => [
             'type' => 'string',
-            'required'=>FALSE
-        )
-    );
+            'format' => '',
+            'required' => TRUE
+        ],
+        'signature' => [
+            'type' => 'string',
+            'required' => TRUE
+        ],
+        'version' => [
+            'type' => 'string',
+            'required' => FALSE
+        ],
+    ];
 
 }

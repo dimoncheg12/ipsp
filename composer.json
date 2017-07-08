@@ -1,5 +1,5 @@
 {
-  "name": "dimoncheg12/ipsp-php",
+  "name": "dimoncheg12/Ipsp",
   "description": "",
   "keywords": [
     "fondy php"
@@ -11,13 +11,15 @@
     }
   ],
   "require": {
-    "php": ">=5.0"
+    "php": ">=5.4"
   },
   "require-dev": {
     "phpunit/phpunit": "4.7.*",
     "phpdocumentor/phpdocumentor": "2.*"
   },
   "autoload": {
-    "psr-4": { "Ipsp\\": "Ipsp/"}
+    "psr-4": {
+      "Ipsp\\": "Ipsp/"
+    }
   }
 }

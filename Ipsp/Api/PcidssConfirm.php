@@ -1,39 +1,40 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_PaymentPcidss
  */
-class PcidssConfirm extends Resource{
+class PcidssConfirm extends IpspResource
+{
 
     protected $path = '/3dsecure_step2';
-    protected $fields = array(
-        'order_id' => array(
+    protected $fields = [
+        'order_id' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'merchant_id' => array(
+        ],
+        'merchant_id' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'pares' => array(
+        ],
+        'pares' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'md' => array(
+        ],
+        'md' => [
             'type' => 'string',
             'required' => TRUE
-        ),
-        'version' => array(
+        ],
+        'version' => [
             'type' => 'cvv',
             'required' => FALSE
-        ),
-        'signature' => array(
+        ],
+        'signature' => [
             'type' => 'string',
             'required' => TRUE
-        )
-    );
+        ]
+    ];
 }

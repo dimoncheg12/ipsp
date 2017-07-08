@@ -1,31 +1,32 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_PaymentStatus
  */
-class Status extends Resource{
+class Status extends IpspResource
+{
 
-    protected $path   = '/status/order_id';
-    protected $fields = array(
-        'order_id'=>array(
-            'type'    => 'string',
-            'required'=>TRUE
-        ),
-        'merchant_id'=>array(
+    protected $path = '/status/order_id';
+    protected $fields = [
+        'order_id' => [
             'type' => 'string',
-            'required'=>TRUE
-        ),
-        'signature' => array(
+            'required' => TRUE
+        ],
+        'merchant_id' => [
             'type' => 'string',
-            'required'=>TRUE
-        ),
-        'version' => array(
+            'required' => TRUE
+        ],
+        'signature' => [
             'type' => 'string',
-            'required'=>FALSE
-        )
-    );
+            'required' => TRUE
+        ],
+        'version' => [
+            'type' => 'string',
+            'required' => FALSE
+        ]
+    ];
 }

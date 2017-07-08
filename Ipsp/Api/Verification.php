@@ -1,52 +1,53 @@
 <?php
 
-namespace Ipsp\Resource;
+namespace Ipsp\API;
 
-use Ipsp\Resource;
+use Ipsp\IpspResource;
 
 /**
  * Class Ipsp_Resource_Refund
  */
-class Verification extends Resource{
+class Verification extends IpspResource
+{
 
-    protected $path   = '/checkout/url';
-    protected $defaultParams = array(
-        'verification'=>'y',
-        'verification_type'=>'code'
-    );
-    protected $fields = array(
-        'merchant_id'=>array(
-            'type'    => 'string',
-            'required'=>TRUE
-        ),
-        'order_id'=>array(
-            'type'    => 'string',
-            'required'=>TRUE
-        ),
-        'currency' => array(
+    protected $path = '/checkout/url';
+    protected $defaultParams = [
+        'verification' => 'y',
+        'verification_type' => 'code'
+    ];
+    protected $fields = [
+        'merchant_id' => [
             'type' => 'string',
-            'required'=>TRUE
-        ),
-        'amount' => array(
+            'required' => TRUE
+        ],
+        'order_id' => [
+            'type' => 'string',
+            'required' => TRUE
+        ],
+        'currency' => [
+            'type' => 'string',
+            'required' => TRUE
+        ],
+        'amount' => [
             'type' => 'integer',
-            'required'=>TRUE
-        ),
-        'verification'=>array(
+            'required' => TRUE
+        ],
+        'verification' => [
             'type' => 'string',
-            'equal'=> 'y'
-        ),
-        'verification_type'=>array(
+            'equal' => 'y'
+        ],
+        'verification_type' => [
             'type' => 'string',
-            'equal'=> 'y',
-            'required'=>TRUE
-        ),
-        'signature' => array(
+            'equal' => 'y',
+            'required' => TRUE
+        ],
+        'signature' => [
             'type' => 'string',
-            'required'=>TRUE
-        ),
-        'version' => array(
+            'required' => TRUE
+        ],
+        'version' => [
             'type' => 'string',
-            'required'=>FALSE
-        )
-    );
+            'required' => FALSE
+        ]
+    ];
 }

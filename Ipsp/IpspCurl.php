@@ -13,14 +13,14 @@ class IpspCurl
     protected $url;                 // URL of the session
     protected $options = [];   // Populates curl_setopt_array
     protected $headers = [];   // Populates extra HTTP headers
-    public $error_code;             // Error code returned as an int
+    public $error_code;         // Error code returned as an int
     public $error_string;           // Error message returned as a string
     public $info;                   // Returned after request (elapsed time, etc)
 
     function __construct($url = '')
     {
         if (!$this->is_enabled())
-            throw new \Exception('curl module not found');
+            throw new \Exception('Curl module not found');
     }
 
     public function post($params = [], $options = [])
