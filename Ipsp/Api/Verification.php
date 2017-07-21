@@ -13,7 +13,7 @@ class Verification extends IpspResource
     protected $path = '/checkout/url';
     protected $defaultParams = [
         'verification' => 'y',
-        'verification_type' => 'code'
+        'verification_type' => 'amount'
     ];
     protected $fields = [
         'merchant_id' => [

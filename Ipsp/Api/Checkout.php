@@ -34,6 +34,11 @@ class Checkout extends IpspResource
         'signature' => [
             'type' => 'string',
             'required' => TRUE
+        ],
+		'preauth' => [
+            'type' => 'string',
+            'equal' => 'Y',
+            'required' => FALSE
         ]
     ];
 
