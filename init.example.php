@@ -46,7 +46,7 @@ var_dump($data);
                     $('#checkout').hide();
                 });
                 this.action('resize', function (data) {
-                    $('#checkout_wrapper').width(580).height(data.height);
+                    $('#checkout_wrapper').width(580).height(600);
                 });
                 this.loadUrl(url);
             });
@@ -55,8 +55,10 @@ var_dump($data);
     </script>
 </head>
 <body id="body">
+<header style="width: 100%; height: 100px; text-align: center; background: lightgreen;"></header>
 <div id="checkout">
-    <div id="checkout_wrapper"></div>
+    <div style="margin: auto" id="checkout_wrapper"></div>
 </div>
+<footer style="width: 100%; height: 100px; text-align: center; background: lightgreen;"></footer>
 </body>
 </html>
