@@ -1,6 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
-//print_r($_POST);die;
+
 use Ipsp\IpspApi;
 use Ipsp\IpspClient;
 
@@ -20,7 +20,7 @@ $data = array(
     'response_url' => 'http://psr4/init.example.php',
     'server_callback_url' => 'http://psr4/init.example.php'
 );
-//$data['signature'] = getSignature(MERCHANT_ID,MERCHANT_PASSWORD,$data);
+
 $data = $ipsp->call('checkout', $data)->getResponse();
 var_dump($data);
 ?>
