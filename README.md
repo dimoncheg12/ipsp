@@ -4,10 +4,6 @@
 A payment service provider (PSP) offers shops online services for accepting electronic payments by a variety of payment methods including credit card, bank-based payments such as direct debit, bank transfer, and real-time bank transfer based on online banking. Typically, they use a software as a service model and form a single payment gateway for their clients (merchants) to multiple payment methods. 
 [read more](https://en.wikipedia.org/wiki/Payment_service_provider)
 
-## Installation
-```cmd
-git clone git@github.com:kosatyi/ipsp-php.git
-```
 ## Quick Start
 
 ```php
@@ -23,33 +19,44 @@ $client = new Ipsp_Client( MERCHANT_ID , MERCHANT_PASSWORD, IPSP_GATEWAY );
 $ipsp   = new Ipsp_Api( $client );
 ```
 
-## Generate Signature
+## Check response sign
 
 ```php
 <?php
-function getSignature( $merchant_id , $password , $params = array() ){
- $params['merchant_id'] = $merchant_id;
- $params = array_filter($params,'strlen');
- ksort($params);
- $params = array_values($params);
- array_unshift( $params , $password );
- $params = join('|',$params);
- return(sha1($params));
-}
+require_once 'vendor/autoload.php';
+
+use Ipsp\IpspVerification;
+
+define('MERCHANT_ID', 1396424);
+define('MERCHANT_PASSWORD', 'test'); 
+
+$verify = new IpspVerification(MERCHANT_ID, MERCHANT_PASSWORD);
+
+echo 'result '; var_dump($verify->check($_POST));
+
 ```
 
 ## Generate Checkout
 
 ```php
 <?php
-$order_id = time();
-$data = $ipsp->call('checkout',array(
- 'order_id'    => $order_id,
- 'order_desc'  => 'Short Order Description',
- 'currency'    => $ipsp::USD ,
- 'amount'      => 2000, // 20 USD
- 'response_url'=> sprintf('http://shop.example.com/checkout/%s',$order_id)
-))->getResponse();
-// redirect to checkoutpage
-header(sprintf('Location: %s',$data->checkout_url));
+require_once 'vendor/autoload.php';
+
+use Ipsp\IpspApi;
+use Ipsp\IpspClient;
+
+define('MERCHANT_ID', 1396424);
+define('MERCHANT_PASSWORD', 'test');
+define('IPSP_GATEWAY', 'api.fondy.eu');
+$client = new IpspClient(MERCHANT_ID, MERCHANT_PASSWORD, IPSP_GATEWAY);
+$ipsp = new IpspApi($client);
+$data = array(
+    'order_id' => time(),
+    'order_desc' => 'Order Description',
+    'currency' => $ipsp::UAH,
+    'amount' => 100, // 1 UAH
+    'response_url' => 'http://psr4/callback.php',
+    'server_callback_url' => 'http://psr4/callback.php'
+);
+$data = $ipsp->call('checkout', $data)->getResponse();
 ```
