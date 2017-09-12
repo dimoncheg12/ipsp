@@ -90,17 +90,7 @@ class IpspApi
     {
         return isset($_POST['response_status']);
     }
-
-    public function success($callback)
-    {
-
-    }
-
-    public function failure($callback)
-    {
-
-    }
-
+    
     /**
      * @param Exception $e
      */

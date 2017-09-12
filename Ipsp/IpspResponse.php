@@ -11,7 +11,9 @@ class IpspResponse
 
     public function __construct($data = [])
     {
-        $this->data = $data;
+        array_walk_recursive($data, function($value, $key){
+            $this->data[$key] = $value;
+        });
     }
 
     /**
@@ -48,11 +50,16 @@ class IpspResponse
     {
         return $this->response_status == 'failure';
     }
-
+	
     public function redirectTo($prop = '')
     {
         if ($this->$prop) {
             header(sprintf('Location: %s', $this->$prop));
         }
+    }
+
+    public function isCaptured()
+    {
+        return $this->data['capture_status'] != 'captured' ? false : true;
     }
 }

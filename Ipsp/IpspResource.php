@@ -204,6 +204,7 @@ class IpspResource
         $params = $this->params;
         $params['merchant_id'] = $this->client->getId();
         $params['signature'] = $this->getSignature($params);
+		
         return $params;
     }
 

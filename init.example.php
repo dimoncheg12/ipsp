@@ -10,19 +10,14 @@ define('IPSP_GATEWAY', 'api.fondy.eu');
 $client = new IpspClient(MERCHANT_ID, MERCHANT_PASSWORD, IPSP_GATEWAY);
 $ipsp = new IpspApi($client);
 $data = array(
-    'merchant_id' => '1396424',
     'order_id' => time(),
-	'rectoken' => 'a41087ed7ce6d8a3e659549d0e1978393ddc266',
-	'required_rectoken' => 'Y',
-    'order_desc' => 'Short Order Description',
+    'order_desc' => 'Order Description',
     'currency' => $ipsp::UAH,
     'amount' => 100, // 1 UAH
-    'response_url' => 'http://psr4/init.example.php',
-    'server_callback_url' => 'http://psr4/init.example.php'
+    'response_url' => 'http://psr4/callback.php',
+    'server_callback_url' => 'http://psr4/callback.php'
 );
-
 $data = $ipsp->call('checkout', $data)->getResponse();
-var_dump($data);
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +41,7 @@ var_dump($data);
                     $('#checkout').hide();
                 });
                 this.action('resize', function (data) {
-                    $('#checkout_wrapper').width(580).height(600);
+                    $('#checkout_wrapper').width(800).height(data.height);
                 });
                 this.loadUrl(url);
             });
