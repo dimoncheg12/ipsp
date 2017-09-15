@@ -11,9 +11,7 @@ class IpspResponse
 
     public function __construct($data = [])
     {
-        array_walk_recursive($data, function($value, $key){
-            $this->data[$key] = $value;
-        });
+        $this->data = $data;
     }
 
     /**
@@ -60,6 +58,23 @@ class IpspResponse
 
     public function isCaptured()
     {
-        return $this->data['capture_status'] != 'captured' ? false : true;
+        $data = $this->getCapturedTransAction();
+	
+        if (!array_key_exists('capture_status', $data)) throw new \Exception('invalid response');
+        return $data['capture_status'] != 'captured' ? false : true;
+    }
+
+    private function getCapturedTransAction()
+    {
+        foreach ($this->data as $data) {
+            if (($data['tran_type'] == 'purchase' || $data['tran_type'] == 'verification')
+                && $data['preauth'] == 'Y'
+                && $data['transaction_status'] == 'approved'
+            ) {
+                return $data;
+            } else {
+                throw new \Exception('Nothing to capture');
+            }
+        }
     }
 }
